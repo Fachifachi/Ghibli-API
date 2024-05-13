@@ -23,35 +23,41 @@ const MovieDetail = ({ params }) => {
   }, [params.id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center">Loading...</div>;
   }
 
   if (error) {
     return (
-      <div>
+      <div className="text-center">
         <p>Error: {error}</p>
-        <button onClick={() => window.location.reload()}>Retry</button>
+        <button onClick={() => window.location.reload()} className="mt-4 px-4 py-2 bg-red-500 text-white rounded-md shadow-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-400">
+          Retry
+        </button>
       </div>
     );
   }
 
   if (!movie) {
-    return <div>No movie found.</div>;
+    return <div className="text-center">No movie found.</div>;
   }
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{movie.title}</h1>
-      <div className="flex justify-between items-center mb-4">
-        <p><strong>Título Original:</strong> {movie.original_title}</p>
-        <p><strong>Título Original Romanizado:</strong> {movie.original_title_romanised}</p>
-        <p><strong>Año de lanzamiento:</strong> {movie.release_date}</p>
-        <p><strong>Director:</strong> {movie.director}</p>
-        <p><strong>Productor:</strong> {movie.producer}</p>
-        <p><strong>Duración:</strong> {movie.running_time} minutos</p>
-        <p><strong>Puntuación en Rotten Tomatoes:</strong> {movie.rt_score}</p>
+      <div className="flex flex-wrap mb-4">
+        <div className="w-full md:w-1/2">
+          <img src={movie.movie_banner} alt={movie.title} className="w-full rounded-lg shadow-md mb-4" />
+        </div>
+        <div className="w-full md:w-1/2 md:pl-4">
+          <p className="text-lg mb-2"><strong>Título Original:</strong> {movie.original_title}</p>
+          <p className="text-lg mb-2"><strong>Título Original Romanizado:</strong> {movie.original_title_romanised}</p>
+          <p className="text-lg mb-2"><strong>Año de Lanzamiento:</strong> {movie.release_date}</p>
+          <p className="text-lg mb-2"><strong>Director:</strong> {movie.director}</p>
+          <p className="text-lg mb-2"><strong>Productor:</strong> {movie.producer}</p>
+          <p className="text-lg mb-2"><strong>Duración:</strong> {movie.running_time} minutos</p>
+          <p className="text-lg mb-2"><strong>Puntuación en Rotten Tomatoes:</strong> {movie.rt_score}</p>
+        </div>
       </div>
-      <img src={movie.movie_banner} alt={movie.title} className="w-full rounded-lg shadow-md mb-4" />
       <p className="text-lg">{movie.description}</p>
     </div>
   );

@@ -1,5 +1,3 @@
-// MoviesAll.jsx
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'wouter';
@@ -39,17 +37,15 @@ const MoviesAll = () => {
   }
 
   return (
-    <div>
-      <h1>Listado de Películas</h1>
-      <ul>
+    <div className="container mx-auto px-4 py-8">
+      <div className="grid grid-cols-5 gap-4">
         {movies.map(movie => (
-          <li key={movie.id}>
-            <Link href={`/movies/${movie.id}`}>
-              {movie.title}
-            </Link>
-          </li>
+          <Link key={movie.id} href={`/movies/${movie.id}`} className="flex flex-col items-center">
+            <img src={movie.image} alt={movie.title} className="w-full h-auto rounded-lg shadow-md mb-2 object-cover" />
+            <span className="text-center">{movie.title}</span>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
