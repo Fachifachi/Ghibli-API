@@ -1,27 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Link } from 'wouter';
+import useFetchMovies from '../hooks/useFetchMovies';
 
 const MoviesAll = () => {
-  const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const response = await axios.get('https://ghibliapi.vercel.app/films');
-        setMovies(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching movies:', error);
-        setError('Error fetching movies. Please try again later.');
-        setLoading(false);
-      }
-    };
-
-    fetchMovies();
-  }, []);
+  const { movies, error, loading } = useFetchMovies();
 
   if (loading) {
     return <div>Loading...</div>;

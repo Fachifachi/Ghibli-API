@@ -9,7 +9,7 @@ import Breadcrumb from './Components/Breadcrumb';
 
 const App = () => {
   return (
-    <div style={{ backgroundColor: '#4C684C', minHeight: '100vh', padding: '20px 0' }}>
+    <div style={{ backgroundColor: 'white', minHeight: '100vh', padding: '20px 0' }}>
       <Router>
         <Breadcrumb />
         <Switch>
