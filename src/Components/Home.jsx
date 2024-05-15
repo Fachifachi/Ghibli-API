@@ -21,8 +21,13 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Inicio</h1>
-      <div className="flex flex-wrap justify-center">
+      {/* Banner */}
+      <div className="bg-gray-800 text-white text-center py-4">
+        <p className="text-lg">Welcome to the Ghibli Universe!</p>
+        <p className="text-sm">Explore the enchanting world of Studio Ghibli films.</p>
+      </div>
+   
+      <div className="flex flex-wrap justify-center mt-4">
         {movies.map(movie => (
           <Link key={movie.id} href={`/movies/${movie.id}`} className="flex flex-col items-center m-4">
             <img src={movie.image} alt={movie.title} className="w-48 h-auto" />
@@ -30,9 +35,11 @@ const Home = () => {
           </Link>
         ))}
       </div>
-      {/* Botón para ir a MoviesAll */}
+      {/* Button to go to MoviesAll */}
       <Link href="/movies" className="block text-center mt-4">
-        <button>Ver Todas las Películas</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          See All Movies
+        </button>
       </Link>
     </div>
   );

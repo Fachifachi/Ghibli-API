@@ -38,7 +38,7 @@ const MoviesAll = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {movies.map(movie => (
           <Link key={movie.id} href={`/movies/${movie.id}`} className="flex flex-col items-center">
             <img src={movie.image} alt={movie.title} className="w-full h-auto rounded-lg shadow-md mb-2 object-cover" />

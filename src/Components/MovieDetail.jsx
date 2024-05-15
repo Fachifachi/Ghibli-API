@@ -29,7 +29,7 @@ const MovieDetail = ({ params }) => {
   if (error) {
     return (
       <div className="text-center">
-        <p>Error: {error}</p>
+        <p className="text-lg text-red-600 mb-4">Error: {error}</p>
         <button onClick={() => window.location.reload()} className="mt-4 px-4 py-2 bg-red-500 text-white rounded-md shadow-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-400">
           Retry
         </button>
@@ -43,11 +43,9 @@ const MovieDetail = ({ params }) => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">{movie.title}</h1>
-      <div className="flex flex-wrap mb-4">
-        <div className="w-full md:w-1/2">
-          <img src={movie.movie_banner} alt={movie.title} className="w-full rounded-lg shadow-md mb-4" />
-        </div>
+      <h1 className="text-3xl font-bold mb-4 text-center">{movie.title}</h1>
+      <div className="flex flex-col md:flex-row items-center md:items-start mb-4">
+        <img src={movie.movie_banner} alt={movie.title} className="w-full md:w-1/2 rounded-lg shadow-md mb-4 md:mb-0" />
         <div className="w-full md:w-1/2 md:pl-4">
           <p className="text-lg mb-2"><strong>Título Original:</strong> {movie.original_title}</p>
           <p className="text-lg mb-2"><strong>Título Original Romanizado:</strong> {movie.original_title_romanised}</p>
