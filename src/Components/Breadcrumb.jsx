@@ -33,18 +33,21 @@ const Breadcrumb = () => {
   const pathSegments = getPathSegments();
 
   return (
-    <div className="flex justify-center items-center text-gray-900 text-2xl font-bold py-4">
+    <div className="flex justify-center items-center text-gray-900 text-2xl font-bold py-4 bg-gray-300">
       <Link href="/" className="hover:text-gray-800">
         Home
       </Link>
       {pathSegments.map((segment, index) => (
-        <span key={index} className="flex items-center mx-4">
-          <svg
-            className="w-6 h-6 fill-current text-gray-700"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-          </svg>
+        <span key={index} className="flex items-center mx-6">
+          {index !== 0 && (
+            <svg
+              className="w-4 h-4 fill-current text-gray-700 transform rotate-180"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M8 0l-8 8 8 8 1.41-1.41-6.59-6.59h17.17v-2h-17.17l6.59-6.59z"/>
+            </svg>
+          )}
           {index === pathSegments.length - 1 ? (
             <span>{movieName || segment.charAt(0).toUpperCase() + segment.slice(1)}</span>
           ) : (
